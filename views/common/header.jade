@@ -1,0 +1,13 @@
+header.header
+  .menu_container
+    input#menu.hidden_checkbox(type='checkbox', name='menu')
+    label.menu_icon(for='menu')
+    h2.menu_header Menu
+    nav.menu
+      ul.menu_list
+        li.menu_item
+          a.menu_link(href='/') HOME
+        li.menu_item
+          a.menu_link.animsition-link(href='/mds/new', data-animsition-out='flip-out-y') NEW
+        li.menu_item
+          a.menu_link.animsition-link(href='/mds/list', data-animsition-out='fade-out') LIST

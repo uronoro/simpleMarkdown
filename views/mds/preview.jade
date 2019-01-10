@@ -1,0 +1,34 @@
+extends ../layout_preview
+
+block content
+  // マークダウン用のスタイルを適用する
+  link(rel='stylesheet', href='/stylesheets/markdown.css')
+
+  script.
+    $(function() {        
+        /* 
+         * ajaxにてPOST送信
+         * 一定間隔ごとに画面を更新する
+         */
+        
+        setInterval(function() {
+            $.ajax({
+                type: 'POST',
+                url : '../preview',
+                data: {
+                    'id'   : '#{id}'
+                }
+
+            }).success(function(data){
+                // リアルタイムで反映する
+                $('.container').html(data);
+            
+            }).error(function(data){
+                console.error(data);
+            });
+        }, 5000);
+    });
+
+  
+  .container
+    !{convert_text}

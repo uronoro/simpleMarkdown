@@ -1,0 +1,37 @@
+extends ../layout
+
+block content
+
+  script.
+    $(function() {
+      // マークダウンのインプットエリア
+      $('.input_area').keypress(function() {
+        var input_area = $(".input_area").val();
+        
+        /* 
+         * ajaxにてPOST送信
+         * 
+         */
+     
+        $.ajax({
+            type: 'POST',
+            url : 'mds/convert',
+            data: {
+                'text' : input_area
+            }
+          
+        }).success(function(data){
+            // リアルタイムで反映する
+            $('.output_area').html(data);
+            
+        }).error(function(data){
+            console.error(data);
+        });
+      });
+    });
+
+  
+  #main
+    textarea.input_area
+    .output_area
+

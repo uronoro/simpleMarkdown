@@ -1,0 +1,72 @@
+extends ../layout
+
+block content
+
+  .container
+    table.markdown_list
+      tr
+        th.w10.
+          id
+        th.w30.
+          title
+        th.w15.
+          created
+        th.w15.
+          updated
+        th.w10.
+          edit
+        th.w10.
+          preview
+        th.w10.
+          action
+        
+        each result, index in results
+          tr
+            td.tac #{result.id}
+            td #{result.markdown_text}
+            td #{result.created_at}
+            td #{result.mupdated_at}
+            td.tac
+              a(href='view/#{result.id}') edit
+            td.tac
+              a(href='preview/#{result.identify_code}', target='_blank') preview
+            td.tac
+              if result.is_delete != true
+                a(href='delete/#{result.id}') delete
+              else
+                a(href='restore/#{result.id}') restore
+            //- form(method='post', name='post_form', action='/mds/delete')
+            //-   input(type='hidden', name='id', value='#{result.id}')
+            //-   a(href='javascript:post_form[#{index}].submit()') delete
+
+//        tr
+//          td.
+//            test
+//          td.
+//            test
+//          td.
+//            2017-12-03T01:54:24
+//          td.
+//            2017-12-03T01:54:24
+//          td.tac
+//            a(href='https://google.com') edit
+//          td.tac
+//            a(href='https://google.com') preview
+//          td.tac
+//            a(href='https://google.com') delete
+//        tr
+//          td.
+//            test
+//          td.
+//            test
+//          td.
+//            2017-12-03T01:54:24
+//          td.
+//            2017-12-03T01:54:24
+//          td.tac
+//            a(href='https://google.com') edit
+//          td.tac
+//            a(href='https://google.com') preview
+//          td.tac
+//            a(href='https://google.com') delete
+    
